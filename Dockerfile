@@ -24,6 +24,15 @@ RUN echo 'export PS1="[\u@docker] \W # "' >> /root/.bash_profile
 # Install dependecies
 RUN yum -y install httpd postgresql postgresql-server postgresql-contrib python-lxml python-imaging python-crypto python-psycopg2 unzip git ImageMagick
 RUN yum -y install python-setuptools
+RUN easy_install pip
+RUN pip install requests
+
+RUN easy_install pip
+RUN pip install requests
+
+RUN git clone https://github.com/Mayo-QIN/pygrunt.git
+
+ENV PYTHONPATH $PYTHONPATH:/pygrunt
 
 # install supervisord
 RUN /bin/rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm && \
@@ -47,7 +56,7 @@ RUN yum clean all
 RUN service postgresql initdb
 
 # get and install Tactic
-RUN git clone -b 4.6 --depth 1 https://github.com/Southpaw-TACTIC/TACTIC.git && \
+RUN git clone -b 4.5 --depth 1 https://github.com/Southpaw-TACTIC/TACTIC.git && \
     cp TACTIC/src/install/postgresql/pg_hba.conf /var/lib/pgsql/data/pg_hba.conf && \
     chown postgres:postgres /var/lib/pgsql/data/pg_hba.conf && \
     service postgresql start && \

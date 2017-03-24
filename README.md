@@ -25,9 +25,10 @@ Things included:
 - A Tactic instance than can be deployed based o a docker file:
 
 	> To deploy follow the steps be executing the commands:
-	> 1. **docker build .** ( This will take some time)
+	> 1. **docker build . -t tactic** ( This will take some time)
 	> 2. **docker images** (Will list all the images select the most recent one)
-	> 3. **docker run -d -p 10080:80 -p 10081:22 -e ROOT_PASSWORD="my_secure_root_password" {imageID}}**
+	> 3. **docker run -d --name tactic-p 10080:80 -p 10081:22 -e ROOT_PASSWORD="test" tactic**
+		> If link 3. **docker run -d --name tactic --link receive:receive-p 10080:80 -p 10081:22 -e ROOT_PASSWORD="test" tactic**
 
 	> Tactic is up and running, you can visit localhost:10080 and start setting up the project details or ssh to your docker by **ssh root@localhost -p 10081** or shell access.
 
