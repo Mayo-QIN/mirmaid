@@ -67,7 +67,7 @@ RUN git clone -b 4.5 --depth 1 https://github.com/Southpaw-TACTIC/TACTIC.git && 
 
 EXPOSE 80 22
 
-COPY qin-1.0.0.zip /home/apache/tactic_data/templates/qin-1.0.0.zip
+COPY qin-1.0.1.zip /home/apache/tactic_data/templates/qin-1.0.0.zip
 
 # to correct --> TERM environment variable not set
 ENV TERM dumb
